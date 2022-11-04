@@ -8,10 +8,12 @@
     tools:context=".MainActivity">
 
     <EditText
+        style="@style/OrangeText"
         android:id="@+id/editText2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+
         android:inputType="textCapSentences|textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
@@ -20,6 +22,7 @@
 
     <Button
         android:id="@+id/button"
+        style="@style/IrisText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
@@ -30,7 +33,6 @@
 
     <View
         android:id="@+id/snackBar"
-        android:background="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -51,14 +53,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:layout_width="422dp"
-        android:layout_height="653dp"
+        style="@style/PurpleText"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
         android:layout_marginEnd="1dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/snackBar"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ListView
             android:id="@+id/listView"

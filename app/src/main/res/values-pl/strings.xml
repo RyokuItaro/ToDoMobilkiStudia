@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TodolistStudia</string>
+    <string name="addTask">Dodaj zadanie</string>
+    <string name="taskAdded">Zadanie dodane</string>
+    <string name="taskRemoved">Zadanie usuniete</string>
+    <string name="tasksRemaining">Zadania do zrobienia: </string>
+    <string name="emptyStringWarning">Nazwa zadania nie może być pusta</string>
+</resources>

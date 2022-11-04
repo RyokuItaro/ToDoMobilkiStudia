@@ -4,4 +4,6 @@
         android:title="Dodaj zadanie"/>
     <item android:id="@+id/deleteTask"
         android:title="Usun zadanie" />
+    <item android:id="@+id/howManyTasks"
+        android:title="Ile zadań zostało do zrobienia" />
 </menu>

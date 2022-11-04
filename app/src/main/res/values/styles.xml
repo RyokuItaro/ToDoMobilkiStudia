@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OrangeText" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12pt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FF5733</item>
+    </style>
+    <style name="IrisText" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12pt</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor"> #FF5733 </item>
+    </style>
+    <style name="PurpleText" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#702963</item>
+    </style>
+</resources>

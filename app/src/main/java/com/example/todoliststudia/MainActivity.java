@@ -2,6 +2,7 @@ package com.example.todoliststudia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Button button;
     private View snackBar;
+    private int doneTasksCount = 0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.deleteTask:
                 Toast.makeText(this, "Aby usunąć zadanie, kliknij i przytrzymaj zadanie które chcesz usunąć", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.howManyTasks:
+                Toast.makeText(this, "Zostało " + (items.size() - doneTasksCount) + " zadań do zrobenia", Toast.LENGTH_SHORT).show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button);
         snackBar = findViewById(R.id.snackBar);
@@ -67,13 +74,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         items = new ArrayList<>();
-        itemsAdapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,items);
+        itemsAdapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_checked,items);
         listView.setAdapter(itemsAdapter);
-        itemsAdapter.add("Praca");
-        itemsAdapter.add("Sniadanie");
-        itemsAdapter.add("Studia");
-        itemsAdapter.add("Wow prepatch");
-
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -89,21 +91,22 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-                if(pos == 3){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=uvsPzuriDdA"));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.setPackage("com.google.android.youtube");
-                    startActivity(intent);
+                CheckedTextView check = (CheckedTextView) view;
+                check.setChecked(!check.isChecked());
+                if(check.isChecked() == true){
+                    doneTasksCount++;
+                }
+                else{
+                    doneTasksCount--;
                 }
             }
         });
-
     }
 
     private void addItem(View view) {
         EditText input = findViewById(R.id.editText2);
         input.setRawInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-        String itemtext=input.getText().toString();
+        String itemtext = input.getText().toString();
 
         if(!(itemtext.equals(""))){
             itemsAdapter.add(itemtext);
@@ -114,5 +117,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Nie mozna dodac pustego zadania",Toast.LENGTH_LONG).show();
         }
     }
-
 }
